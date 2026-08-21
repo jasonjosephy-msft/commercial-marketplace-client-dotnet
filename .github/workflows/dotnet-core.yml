@@ -19,10 +19,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup .NET Core 6.x
-      uses: actions/setup-dotnet@v3
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '6.x'        
+        global-json-file: global.json
 
     - name: Build
       run: dotnet build --configuration 'release'
@@ -59,7 +59,7 @@ jobs:
 
     # upload report as build artifact
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{always()}}
       with:
         name: 'Test Run'

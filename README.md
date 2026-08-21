@@ -34,6 +34,8 @@ Then call the appropriate method corresponding to the API call.
 ```
 
 # Running the tests
+Install the .NET 10 SDK version pinned in [`global.json`](./global.json) before building or running tests. The client libraries continue to multi-target supported compatibility frameworks, but repository builds and CI use .NET 10.
+
 We are using the Azure.Core.TestFramework from the [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core.TestFramework). Since no NuGet package includes this assembly at the time of the development of this library project, we opted to make a copy of that source tree and directly include in our repository.
 
 We will be turning on the RecordedTestMode.Record each time we generate the client code when the API surface changes or we need to change the implementation. We are including the session recordings, and the tests will be run against the recorded sessions by default.

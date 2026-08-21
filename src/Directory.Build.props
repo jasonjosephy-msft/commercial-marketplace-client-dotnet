@@ -5,7 +5,8 @@
   <!-- <Import Project="$(MSBuildThisFileDirectory)\Directory.Build.props" Condition="Exists('..\Directory.Build.props')" /> -->
 
   <PropertyGroup>
-    <RequiredTargetFrameworks Condition="$(RequiredTargetFrameworks) == ''">netstandard2.0;net472;net8.0</RequiredTargetFrameworks>
+    <RequiredTargetFrameworks Condition="$(RequiredTargetFrameworks) == ''">netstandard2.0;net472;net10.0</RequiredTargetFrameworks>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
