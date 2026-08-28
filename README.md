@@ -1,18 +1,22 @@
-![.NET Core](https://github.com/microsoft/commercial-marketplace-client-dotnet/workflows/.NET%20Core/badge.svg)
-
 # Change log
-    - Started using AutoRest C# generator V3 to take advantage of new features.
-    - Removed container based code generation. Using the code build target for code generation coming with C# generator V3. Please see the generate.cmd file in the src folder.
-    - Modified the repo structure for streamlining with the new code generation method.
-    - Added two C# projects supporting code generation (SaaS and Metering) and one project for building the binary assets (Microsoft.Marketplace.csproj).    
+
+## V3 Release Notes:
+
+- Replaced the closed `TermUnitEnum` enum with `TermUnit`, an extensible-enum struct. Unknown term-unit values returned by the service now round-trip through serialization instead of throwing.
+- `RecurrentBillingTerm` and `SubscriptionTerm` now expose `TermUnit` instead of `TermUnitEnum`.
+- Added `TermUnitExtension.ToDisplayString()` for human-readable duration formatting.
+
+### Breaking changes
+
+- `TermUnitEnum` has been removed. Update any code that referenced it to use `TermUnit` instead.
 
 ## Breaking changes for preview2
 
-    - Constructors for the clients are now using classes deriving from Azure.Core.TokenCredential defined in Azure.Identity namespace (in Azure.Identity NuGet package)
-    - Removed *TokenProvider 
-    - Removed ListAllSubscriptionsAsync method on the FulfillmentOperations in favor of the generated ListSubscriptions* methods that implement pagination. Please see the tests for different usages.
-    - Renamed FulfillmentOperations property on the MarketplaceSaaSClient to Fulfillment
-    - Removed serialization checks on the SubscriberPlan and UsageEvent classes for consistency. The libraries rely on serialization checks on the service side.
+- Constructors for the clients are now using classes deriving from Azure.Core.TokenCredential defined in Azure.Identity namespace (in Azure.Identity NuGet package)
+- Removed *TokenProvider
+- Removed ListAllSubscriptionsAsync method on the FulfillmentOperations in favor of the generated ListSubscriptions* methods that implement pagination. Please see the tests for different usages.
+- Renamed FulfillmentOperations property on the MarketplaceSaaSClient to Fulfillment
+- Removed serialization checks on the SubscriberPlan and UsageEvent classes for consistency. The libraries rely on serialization checks on the service side.
 
 # Using the client libraries
 

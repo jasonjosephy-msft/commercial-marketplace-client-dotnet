@@ -11,6 +11,19 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <!--
+      SA0001: XML comment analysis is disabled because GenerateDocumentationFile
+      is not set for these projects; this is purely informational noise.
+      CS8602/CS8604 are NOT suppressed here. See src\Directory.Build.props and
+      tests\Directory.Build.props (note: this root file is NOT currently
+      imported by either of those - the import is commented out - so any
+      shared configuration intended for src/tests projects must be duplicated
+      there rather than placed here).
+    -->
+    <NoWarn>$(NoWarn);SA0001</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <IsClientLibrary Condition="'$(IsClientLibrary)' == '' and $(MSBuildProjectName) == 'Microsoft.Marketplace'">true</IsClientLibrary>
     <IsTestProject Condition="$(MSBuildProjectName.EndsWith('.Tests'))">true</IsTestProject>
     <IsSamplesProject Condition="$(MSBuildProjectName.EndsWith('.Samples'))">true</IsSamplesProject>
